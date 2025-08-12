@@ -1,0 +1,55 @@
+<p style="position: relative; "> Logged user:  <span>{{ loggedUser }}</span></p>
+<div class="container">
+  <h1 style="text-align: center;"> {{title}}</h1>
+
+<table>
+  <thead>
+    <th>Lp.</th>
+    <th>Name</th>
+   
+    <th> Addresses 
+      <tr>
+        <td>Street</td>
+        <td>City</td>
+        <td>Zip code</td>
+      </tr>
+    </th>
+    <th>Operations</th>
+  </thead>
+  <tbody>
+
+  
+
+@for (user of users; track user.name; let idx = $index, e = $even) 
+{    
+  <tr>
+    <td>{{idx + 1}}</td>
+    <td>{{user.name}}</td>
+    <td>
+      @for (address of user.addresses; track address;){
+      <tr>
+        
+      <td>
+        {{address.zipcode}} ,
+      </td>
+      <td>
+        {{address.city}} ,
+      </td>
+      <td>
+        {{address.street}} 
+      </td>
+    
+     </tr>
+     
+    }
+    
+    </td>
+   <td><a routerLink="/contact">Edit</a> &nbsp;<a routerLink="/contact">Delete</a></td>
+  </tr>
+}
+</tbody>
+</table>
+
+<div *ngIf="errorMsg" style="color:red">{{errorMsg}}</div>
+</div>
+

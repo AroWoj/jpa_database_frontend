@@ -1,0 +1,17 @@
+.container {
+    margin: 50px auto;
+    width:600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+tr, td {
+    border: 1px solid blue;
+    text-align: center;
+}
+th {
+    border: 3px solid blue;
+    text-align: center;
+}
