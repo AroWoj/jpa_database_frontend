@@ -1,0 +1,15 @@
+services:
+  jpa-database-frontend:
+    container_name: jpa-database-frontend-container
+    build: .
+    image: jpa-database-frontend-image
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge
