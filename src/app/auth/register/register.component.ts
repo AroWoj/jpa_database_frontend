@@ -36,7 +36,7 @@ export class RegisterComponent {
        console.log("register userData: ", data)
       this.router.navigate(['/activate-account']); 
     },
-     error: (err) => this.errorMsg = 'Wystąpił błąd'
+     error: (err) => this.errorMsg = err.error.message || 'Registration failed, please try again.'
     })
    
   }

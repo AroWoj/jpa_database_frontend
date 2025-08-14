@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Token } from '../services/token';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl = 'http://localhost:8080/api/v1/auth'
+  BASE_URL = environment.API_BASE_URL || 'http://localhost:8080/api/v1';
+  baseUrl = `${this.BASE_URL}/auth`
   private token = '';
   loggedIn: boolean = false;
   
