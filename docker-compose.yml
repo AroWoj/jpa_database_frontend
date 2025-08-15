@@ -4,9 +4,9 @@ services:
     build: .
     image: jpa-database-frontend-image
     ports:
-      - 80:80
+      - "80:80"
     expose:
-      - 80
+      - "80"
     networks:
       - internalnet
 
