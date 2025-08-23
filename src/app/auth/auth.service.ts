@@ -13,33 +13,33 @@ export class AuthService {
   baseUrl = `${this.BASE_URL}/auth`
   private token = '';
   loggedIn: boolean = false;
-  
+
   constructor(
     private http: HttpClient,
     private router: Router
   ) { }
-  
+
   get isLoggedIn(): boolean {
     console.log("Auth ", this.token)
-    return this.token == null ? false : true ;
+    return this.token == null ? false : true;
   }
 
- register(authData:{name:string, email:string, password: string}): Observable<any> {
+  register(authData: { name: string, email: string, password: string }): Observable<any> {
     //const request = {email:'arekw37@o2.pl', password:'password'}
-      return this.http.post<any>(`${this.baseUrl}/register`, authData)
+    return this.http.post<any>(`${this.baseUrl}/register`, authData)
   }
 
-  login(authData:{email:string, password: string}): Observable<Token> {
+  login(authData: { email: string, password: string }): Observable<Token> {
     //const request = {email:'arekw37@o2.pl', password:'password'}
-      return this.http.post<Token>(`${this.baseUrl}/authenticate`, authData)
+    return this.http.post<Token>(`${this.baseUrl}/authenticate`, authData)
   }
-  
+
   confirm(token: string) {
-    return this.http.get(`${this.baseUrl}/activate-account`,{ params: { token: token }} )
+    return this.http.get(`${this.baseUrl}/activate-account`, { params: { token: token } })
   }
 
   doLogin() {
-   this.router.navigate(['login'])
+    this.router.navigate(['login'])
   }
   logout() {
     let removeToken = localStorage.removeItem('token');
@@ -48,6 +48,6 @@ export class AuthService {
     if (removeToken == null) {
       this.router.navigate(['login'])
     }
-    
+
   }
 }

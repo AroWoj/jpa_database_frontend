@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { User } from '../../interface/user';
-import { UserServiceService } from '../../services/user-service.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { UserDTO } from '../../interface/userDTO';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,11 +13,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 export class DashboardComponent {
 
  title = 'Database';
-  users: Array<User> = [];
+  users: Array<UserDTO> = [];
   errorMsg: string = '';
   loggedUser: string ='';
 
-   constructor(private service: UserServiceService,
+   constructor(private service: UserService,
               private activeRoute: ActivatedRoute
    ) {}
 
