@@ -30,7 +30,6 @@ export class AuthService {
   }
 
   login(authData: { email: string, password: string }): Observable<Token> {
-    //const request = {email:'arekw37@o2.pl', password:'password'}
     return this.http.post<Token>(`${this.baseUrl}/authenticate`, authData)
   }
 

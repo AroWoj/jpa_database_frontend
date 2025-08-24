@@ -3,7 +3,7 @@
   
 <form [formGroup]="form" (ngSubmit)="submit(form.value)">
   <div class="container"><h2>Login</h2></div>
-  @if (errorMsg) {<div>{{errorMsg}}</div>}
+  <div *ngIf="errorMsg">{{errorMsg}}</div>
   <div class="container">
     <label for="email"><b>Email</b></label>
     <input type="email" placeholder="Enter email" formControlName="email" required>
