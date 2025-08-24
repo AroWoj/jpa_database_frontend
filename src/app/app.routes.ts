@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -27,7 +27,7 @@ export const routes: Routes = [
         component: LoginComponent,
         title: 'Login'
     },
-    
+
     {
         path: 'activate-account',
         component: ActivateAccountComponent,
@@ -36,10 +36,11 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
-        title: 'Dashboard'
+        title: 'Dashboard',
+
     },
     {
-        path:'**',
+        path: '**',
         component: NotFoundComponent,
         title: 'Page Not Found'
     }

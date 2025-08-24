@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from '../interface/user';
+import { User } from '../../interface/user';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "../components/header/header.component";
-import { FooterComponent } from "../components/footer/footer.component";
+import { HeaderComponent } from "../header/header.component";
+import { FooterComponent } from "../footer/footer.component";
 
 
 @Component({
@@ -12,6 +12,6 @@ import { FooterComponent } from "../components/footer/footer.component";
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  
+
 
 }
