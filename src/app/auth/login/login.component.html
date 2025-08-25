@@ -1,24 +1,37 @@
- <div class="container-fluid">
-  
-  
-<form [formGroup]="form" (ngSubmit)="submit(form.value)">
-  <div class="container"><h2>Login</h2></div>
-  <div *ngIf="errorMsg">{{errorMsg}}</div>
-  <div class="container">
-    <label for="email"><b>Email</b></label>
-    <input type="email" placeholder="Enter email" formControlName="email" required>
+<div class="container-fluid">
+  <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+    <div class="container">
+      <h2>Login</h2>
+    </div>
 
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" formControlName="password" required>
+    <div class="container">
+      <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+        {{errorMsg}}
+      </div>
+      <!-- <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter email" formControlName="email" required> -->
 
-    <button type="submit" class="btn btn-primary">Login</button>
-    
-  </div>
+      <mat-form-field>
+        <mat-label>Enter your email address</mat-label>
+        <input matInput [type]="'text'" formControlName="email" />
+      </mat-form-field>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
-    <span class="psw">Don't have an account? <a routerLink="/register">Register</a></span>
-  </div>
-</form> 
- </div>
- 
+      <!-- <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" formControlName="password" required> -->
+
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+        <button matIconButton matTextSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()">
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Login</button>
+    </div>
+    <div class="container">
+      <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+      <span class="psw">Don't have an account? <a routerLink="/register">Register</a></span>
+    </div>
+  </form>
+</div>
