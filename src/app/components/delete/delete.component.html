@@ -1,0 +1,10 @@
+<div class="main-delete-wrapper">
+    <div class="delete-component">
+        <h2>Delete Item</h2>
+        <p>Are you sure you want to delete {{userDTO?.name}}?</p>
+        <div class="button-group">
+            <button type="button" class="btn btn-sm btn-danger" (click)="deleteUser()">Delete</button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>
