@@ -6,6 +6,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
+import { EditComponent } from './components/edit/edit.component';
+import { DeleteComponent } from './components/delete/delete.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +34,17 @@ export const routes: Routes = [
         path: 'activate-account',
         component: ActivateAccountComponent,
         title: 'Activate account'
+    },
+
+    {
+        path: 'dashboard/edit/users/:id',
+        component: EditComponent,
+        title: 'Edit user'
+    },
+    {
+        path: 'dashboard/delete/users/:id',
+        component: DeleteComponent,
+        title: 'Delete user'
     },
     {
         path: 'dashboard',
