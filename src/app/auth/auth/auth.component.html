@@ -1,2 +1,2 @@
-<button *ngIf="loggedIn" class="btn btn-sm btn-danger" (click)="authService.doLogin()">Zaloguj się</button>
-<button *ngIf="!loggedIn" class="btn btn-sm btn-warning" (click)="authService.logout()">Wyloguj się</button>
+<button *ngIf="!loggedIn" class="btn btn-sm btn-danger" (click)="authService.doLogin()">Zaloguj się</button>
+<button *ngIf="loggedIn" class="btn btn-sm btn-warning" (click)="authService.logout()">Wyloguj się</button>

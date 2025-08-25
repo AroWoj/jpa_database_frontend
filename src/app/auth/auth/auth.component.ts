@@ -27,7 +27,7 @@ export class AuthComponent implements OnInit{
     if(data instanceof NavigationEnd) {
       this.url = data.url;
       console.log("url", this.url)
-      this.loggedIn = this.authService.isLoggedIn && this.url =='/dashboard' && !this.url.includes('login')
+      this.loggedIn = this.authService.isLoggedIn && this.url.includes('dashboard') && !this.url.includes('login')
     }
     });
   }

@@ -24,8 +24,11 @@ export class AuthService {
     return this.token == null ? false : true;
   }
 
+  set isLoggedIn(value: boolean) {
+    this.loggedIn = value;
+  }
+
   register(authData: { name: string, email: string, password: string }): Observable<any> {
-    //const request = {email:'arekw37@o2.pl', password:'password'}
     return this.http.post<any>(`${this.baseUrl}/register`, authData)
   }
 
@@ -38,14 +41,14 @@ export class AuthService {
   }
 
   doLogin() {
-    this.router.navigate(['login'])
+    this.router.navigate(['/login'])
   }
   logout() {
     let removeToken = localStorage.removeItem('token');
     this.token = '';
     this.loggedIn = false;
     if (removeToken == null) {
-      this.router.navigate(['login'])
+      this.router.navigate(['/login'])
     }
 
   }
