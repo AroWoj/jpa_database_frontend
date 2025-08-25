@@ -1,25 +1,46 @@
 <div class="container-fluid">
-<form [formGroup]="form" (ngSubmit)="submit(form.value)">
-  <div class="container"><h2>Register</h2></div>
-  @if (errorMsg) {<div>{{errorMsg}}</div>}
-  <div class="container">
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter name" formControlName="name" required>
+  <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+    <div class="container">
+      <h2>Register</h2>
+    </div>
 
-    <label for="email"><b>Email</b></label>
-    <input type="email" placeholder="Enter email" formControlName="email" required>
+    <div class="container">
+      <div *ngIf="errorMsg" class="alert alert-danger" role="alert">{{errorMsg}}</div>
+      <!-- <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="Enter name" formControlName="name" required> -->
 
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" formControlName="password" required>
+      <mat-form-field>
+        <mat-label>Enter your name</mat-label>
+        <input matInput [type]="'text'" formControlName="name" />
+      </mat-form-field>
 
-    <button type="submit" class="btn btn-primary">Register account</button>
-    
-  </div>
+      <!-- <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter email" formControlName="email" required> -->
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
-    <span class="psw">Already have an account? <a routerLink="/login">Login</a></span>&nbsp;
-    <!-- <span class="psw">Forgot password? <a routerLink="/forgot">Forgot</a></span> -->
+      <mat-form-field>
+        <mat-label>Enter your email address</mat-label>
+        <input matInput [type]="'email'" formControlName="email" />
+      </mat-form-field>
+
+      <!-- <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" formControlName="password" required> -->
+
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+        <button matIconButton matTextSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()">
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Register account</button>
+
+    </div>
+
+    <div class="container">
+      <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+      <span class="psw">Already have an account? <a routerLink="/login">Login</a></span>
+    </div>
+  </form>
 </div>
-</form> 
- </div>
