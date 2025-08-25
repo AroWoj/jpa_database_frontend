@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
+
   urlBase = environment.API_BASE_URL || 'http://localhost:8080/api/v1';
 
   constructor(public http: HttpClient) { }
@@ -24,6 +25,17 @@ export class UserService {
 
     return this.http.get<Array<UserDTO>>(`${this.urlBase}/users`)
   }
-}
 
+  public getUserById(id: number): Observable<UserDTO> {
+    return this.http.get<UserDTO>(`${this.urlBase}/users/${id}`)
+  }
+
+  public updateUser(id: number, updatedUser: UserDTO): Observable<UserDTO> {
+    return this.http.patch<UserDTO>(`${this.urlBase}/users/${id}`, updatedUser);
+  }
+
+  public deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.urlBase}/users/${id}`);
+  }
+}
 
