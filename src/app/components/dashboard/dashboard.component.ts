@@ -20,7 +20,7 @@ export class DashboardComponent {
   errorMsg: string = '';
   loggedUser: string = '';
   searchTerm: string = '';
-  displayedColumns: string[] = ['id', 'name', 'email', 'age','addresses'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'age', 'addresses'];
   dataSource = new MatTableDataSource<UserDTO>();
 
 
@@ -40,7 +40,7 @@ export class DashboardComponent {
         console.log("Dashboard ", users);
       },
       error: (err) => {
-        this.errorMsg = 'Wystąpił błąd, spróbuj ponownie później';
+        this.errorMsg = 'Nie jesteś zalogowany lub wystąpił inny błąd, spróbuj ponownie.';
 
       }
     })
@@ -48,18 +48,18 @@ export class DashboardComponent {
 
   }
 
-  search():void {
+  search(): void {
     const term = this.searchTerm.trim().toLowerCase();
-  if (!term) {
-    this.filteredUsers = this.users;
-    this.dataSource.data = this.users;
-    return;
-  }
-  this.filteredUsers = this.users.filter(user =>
-    user.name.toLowerCase().includes(term) ||
-    user.email.toLowerCase().includes(term)
-  );
-  this.dataSource.data = this.filteredUsers;
+    if (!term) {
+      this.filteredUsers = this.users;
+      this.dataSource.data = this.users;
+      return;
+    }
+    this.filteredUsers = this.users.filter(user =>
+      user.name.toLowerCase().includes(term) ||
+      user.email.toLowerCase().includes(term)
+    );
+    this.dataSource.data = this.filteredUsers;
   }
 }
 

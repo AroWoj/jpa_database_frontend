@@ -34,13 +34,16 @@ export class LoginComponent {
       next: (data) => {
         localStorage.setItem('loggedUser', userData.email);
         localStorage.setItem('token', data.access_token);
-        this.router.navigate(['dashboard']);
+        if (userData.email) {
+          this.authService.isLoggedIn = true;
+          this.router.navigate(['/dashboard']);
+        }
 
         console.log("po loginie ", data)
-        this.authService.loggedIn = true;
       },
       error: err => {
-        this.errorMsg = "Wystąpił błąd, spróbuj ponownie."; console.log("Error", err.message)
+        this.errorMsg = "Wystąpił błąd, spróbuj ponownie.";
+        console.log("Error", err.message)
       }
     });
   }

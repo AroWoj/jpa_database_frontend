@@ -8,8 +8,10 @@
         class="form-control" />
     </div>
   </div>
-
-  <div *ngIf="filteredUsers.length === 0">
+  <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+    {{errorMsg}}
+  </div>
+  <div *ngIf="filteredUsers.length === 0" class="alert alert-warning" role="alert">
     <p>No users found.</p>
   </div>
 
@@ -67,9 +69,11 @@
       <ng-container matColumnDef="operations">
         <th mat-header-cell *matHeaderCellDef>Operations</th>
         <td mat-cell *matCellDef="let user">
-          <a mat-button color="primary" [routerLink]="['users/edit', user.id]">Edit</a>
+          <button mat-button class="btn btn-sm btn-success"
+            [routerLink]="['/dashboard/edit/users', user.id]">Edit</button>
           &nbsp;
-          <a mat-button color="warn" [routerLink]="['users/delete', user.id]">Delete</a>
+          <button mat-button class="btn btn-sm btn-danger"
+            [routerLink]="['/dashboard/delete/users', user.id]">Delete</button>
         </td>
       </ng-container>
 
@@ -78,5 +82,4 @@
     </table>
   </div>
 
-  <div *ngIf="errorMsg" style="color:red">{{ errorMsg }}</div>
 </div>
