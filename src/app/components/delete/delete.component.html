@@ -1,4 +1,7 @@
 <div class="main-delete-wrapper">
+    <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+    {{errorMsg}}
+  </div>
     <div class="delete-component">
         <h2>Delete Item</h2>
         <p>Are you sure you want to delete {{userDTO?.name}}?</p>
